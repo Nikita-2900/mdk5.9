@@ -134,6 +134,24 @@
 
 const inventory = [];
 let room = "вход";
+// обнаружение предметов
+let isTool = false
+let isOil = false
+let isBook = false
+let isSvechi = false
+let isKarb = false
+let isKey = false
+// рандомайзер
+function getRandomInt(min, max) {
+    return Math.floor(Math.random() * (max - min + 1)) + min;
+};
+// isIdea
+let isIdea1 = false
+let isIdea2 = false
+let isIdea3 = false
+let isIdea4 = false
+let isIdea5 = false
+let isIdea6 = false
 
 function showInventory() {
     if (inventory.length === 0) {
@@ -162,8 +180,9 @@ while (true) {
     else if (room == "коридор") {
         const choice = prompt("Вы находитесь в коридоре. Выберите действие:\n" +
             "0 - Завершить игру\n" +
-            "1 - Идти дальше\n"+
-            "2 - Осмотреться\n"
+            "1 - Идти дальше\n" +
+            "2 - Осмотреться\n" +
+            "3 - Посмотреть рюкзак\n"
         )
         if (choice == "0" || choice == null) {
             break
@@ -206,6 +225,9 @@ while (true) {
         }
         else if (choice == "2") {
             alert("Вы осмотрелись")
+        }
+        else if (choice == "3") {
+            showInventory()
         }
         else {
             alert("Такого действия нет.");
@@ -545,6 +567,95 @@ while (true) {
         }
         else if (choice == "3") {
             alert("Вы подумали")
+            const idea = getRandomInt(1,30)
+            if (idea == 1 && isIdea1 == false) {
+                alert("обычно ключи прячут под ковром, может там и лежит ключ от гаража")
+                isKey = true
+                isIdea1 = true
+                isIdea2 = false
+                isIdea3 = false
+                isIdea4 = false
+                isIdea5 = false
+                isIdea6 = false
+            }
+            else if (idea == 2 && isIdea2 == false) {
+                alert("Скорее всего карбюратор лежит в кладовке. Надо там посмотреть.")
+                isKarb = true
+                isIdea1 = false
+                isIdea2 = true
+                isIdea3 = false
+                isIdea4 = false
+                isIdea5 = false
+                isIdea6 = false
+            }
+            else if (idea == 3 && isIdea3 == false) {
+                alert("А может автомобильное масло лежит в холодильнике, ну чтоб не перегрелось.")
+                isOil = true
+                isIdea1 = false
+                isIdea2 = false
+                isIdea3 = true
+                isIdea4 = false
+                isIdea5 = false
+                isIdea6 = false
+            }
+            else if (idea == 4 && isIdea4 == false) {
+                alert("Полюбому свечи зажигания в комнате 1. Где же им еще быть?")
+                isSvechi = true
+                isIdea1 = false
+                isIdea2 = false
+                isIdea3 = false
+                isIdea4 = true
+                isIdea5 = false
+                isIdea6 = false
+            }
+            else if (idea == 5 && isIdea5 == false) {
+                alert("А может руководство эксплуатации в 3 комнате?")
+                isBook = true
+                isIdea1 = false
+                isIdea2 = false
+                isIdea3 = false
+                isIdea4 = false
+                isIdea5 = true
+                isIdea6 = false
+            }
+            else if (idea == 6 && isIdea6 == false) {
+                alert("Может набор инструментов в санузле оставили? Там последний раз что-то делали.")
+                isTool = true
+                isIdea1 = false
+                isIdea2 = false
+                isIdea3 = false
+                isIdea4 = false
+                isIdea5 = false
+                isIdea6 = true
+            }
+            else if (idea == 7) {
+                alert("А что если обклеить весь автомобиль фольгой, чтобы сбивать с толку камеры и радары ГИБДД.")
+            }
+            else if (idea == 8) {
+                alert("А что будет если соединить два минусовых провода, минус на минус вроде как плюс дают.")
+            }
+            else if (idea == 9) {
+                alert("— Что сказал один глаз другому?\n" +
+                    "— Между нами что-то есть.")
+            }
+            else if (idea == 10) {
+                alert("Мозг назвал сам себя мозгом. По сути, это самый эгоистичный орган в нашем теле.")
+            }
+            else if (idea == 11) {
+                alert("Интересно, а динозавры знали, что они динозавры, или они думали, что они просто ящерицы обычного, нормального размера?")
+            }
+            else if (idea == 12) {
+                alert("Доказывать роботу, что ты не робот, выбирая светофоры на картинках — самое унизительное, что придумало человечество.")
+            }
+            else if (idea == 13) {
+                alert("Проснуться за две минуты до будильника — это одновременно и победа, и величайшая трагедия утра.")
+            }
+            else if (idea == 14) {
+                alert("Проснуться за две минуты до будильника — это одновременно и победа, и величайшая трагедия утра.")
+            }
+            else {
+                alert("Умные мысли не пришли в голову.")
+            };
         }
         else {
             alert("Такого действия нет.");
