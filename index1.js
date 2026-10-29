@@ -597,7 +597,62 @@ while (true) {
         }
         else if (choice == "2") {
             alert("Вы осмотрелись")
+            const check = prompt("Вы увидели три шкафа. Что будете делать:\n" +
+                "0 - Выбрать другое действие\n" +
+                "1 - Посмотреть, что в шкафу 1\n" +
+                "2 - Посмотреть, что в шкафу 2\n" +
+                "3 - Посмотреть, что в шкафу 3\n"
+            )
+            if (check == "0" || check == null) {
+                alert("Возвращаемся к выбору действия.")
+            }
+            else if (check == "1") {
+                alert("Вы посмотрели, что в шкафу 1. \n"+
+                    "Вы увидели лыжи, куртки, шляпы и т.д.\n" +
+                    "Но ничего полезного не нашлось"
+                )
+            }
+            else if (check == "2") {
+                const r_choice = getRandomInt(1, 100)
+                if (inventory.includes("карбюратор")) {
+                    alert("Вы уже забрали карбюратор.")
+                }
+                else if (r_choice < 23 || isSvechi == true) {
+                    isSvechi = true
+                    const take = prompt("Вы посмотрели, что в шкафу 2. \n"+
+                        "Вы увидели карбюратор. Что будете делать:\n" +
+                        "0 - Оставить\n" +
+                        "1 - Забрать\n"
+                    )
+                    if (take == "0" || take == null) {
+                        alert("Вы оставили карбюратор в шкафу 2.")
+                    } 
+                    else if (take == "1") {
+                        alert("Вы забрали карбюратор.")
+                        inventory.push("карбюратор")
+                        showInventory()
+                    }
+                    else {
+                        alert("Такого выбора нет.")
+                    };
+                }
+                else {
+                    alert("Вы посмотрели, что в шкафу 2. \n"+
+                        "Вы двери, шины, рессоры, даже бампер от второйц приоры\n" +
+                        "Но ничего полезного не нашлось"
+                    )
+                }; 
+            }
+            else {
+                alert("Такого выбора нет.")
+            };
         }
+        else if (check == "3") {
+                alert("Вы посмотрели, что в шкафу 3. \n"+
+                    "Вы очень много хлама\n" +
+                    "Но ничего полезного не нашлось"
+                )
+            }
         else {
             alert("Такого действия нет.");
         };
@@ -754,6 +809,7 @@ while (true) {
         else if (choice == "3") {
             alert("Вы подумали")
             const idea = getRandomInt(1,30)
+// КЛЮЧ ОТ ГАРАЖА
             if (idea == 1 && isIdea1 == false) {
                 alert("обычно ключи прячут под ковром, может там и лежит ключ от гаража")
                 isKey = true
@@ -764,6 +820,7 @@ while (true) {
                 isIdea5 = false
                 isIdea6 = false
             }
+// КАРБЮРАТОР
             else if (idea == 2 && isIdea2 == false) {
                 alert("Скорее всего карбюратор лежит в кладовке. Надо там посмотреть.")
                 isKarb = true
@@ -774,6 +831,7 @@ while (true) {
                 isIdea5 = false
                 isIdea6 = false
             }
+// АВТОМОБИЛЬНОЕ МАСЛО
             else if (idea == 3 && isIdea3 == false) {
                 alert("А может автомобильное масло лежит в холодильнике, ну чтоб не перегрелось.")
                 isOil = true
@@ -784,6 +842,7 @@ while (true) {
                 isIdea5 = false
                 isIdea6 = false
             }
+// СВЕЧИ ЗАЖИГАНИЯ
             else if (idea == 4 && isIdea4 == false) {
                 alert("Полюбому свечи зажигания в комнате 1. Где же им еще быть?")
                 isSvechi = true
@@ -794,6 +853,7 @@ while (true) {
                 isIdea5 = false
                 isIdea6 = false
             }
+// РУКОВОДСТЫО ЭКСПЛУАТАЦИИ
             else if (idea == 5 && isIdea5 == false) {
                 alert("А может руководство эксплуатации в 3 комнате?")
                 isBook = true
@@ -804,6 +864,7 @@ while (true) {
                 isIdea5 = true
                 isIdea6 = false
             }
+// НАБОР ИНСТРУМЕНТОВ
             else if (idea == 6 && isIdea6 == false) {
                 alert("Может набор инструментов в санузле оставили? Там последний раз что-то делали.")
                 isTool = true
